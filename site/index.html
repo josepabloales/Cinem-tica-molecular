@@ -1,0 +1,573 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="reference/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+    
+    
+      
+        <title>Dinámica molecular en dos dimensiones (simulación en python)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#marco-teorico" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Dinámica molecular en dos dimensiones (simulación en python)" class="md-header__button md-logo" aria-label="Dinámica molecular en dos dimensiones (simulación en python)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dinámica molecular en dos dimensiones (simulación en python)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Marco Teórico
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Dinámica molecular en dos dimensiones (simulación en python)" class="md-nav__button md-logo" aria-label="Dinámica molecular en dos dimensiones (simulación en python)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Dinámica molecular en dos dimensiones (simulación en python)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Marco Teórico
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Marco Teórico
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#proyecto-final-del-curso-fisica-computacional-universidad-de-costa-rica-semestre-i-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyecto final del curso Física Computacional, Universidad de Costa Rica, Semestre I 2024.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proyecto final del curso Física Computacional, Universidad de Costa Rica, Semestre I 2024.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cinematica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinemática
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colisiones-elasticas-en-una-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colisiones elásticas en una dimensión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colisiones-elasticas-en-dos-dimensiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colisiones elásticas en dos dimensiones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bibliografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliografía
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#proyecto-final-del-curso-fisica-computacional-universidad-de-costa-rica-semestre-i-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyecto final del curso Física Computacional, Universidad de Costa Rica, Semestre I 2024.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Proyecto final del curso Física Computacional, Universidad de Costa Rica, Semestre I 2024.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cinematica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cinemática
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colisiones-elasticas-en-una-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colisiones elásticas en una dimensión
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colisiones-elasticas-en-dos-dimensiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Colisiones elásticas en dos dimensiones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bibliografia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bibliografía
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="marco-teorico">Marco Teórico</h1>
+<h2 id="proyecto-final-del-curso-fisica-computacional-universidad-de-costa-rica-semestre-i-2024">Proyecto final del curso Física Computacional, Universidad de Costa Rica, Semestre I 2024.</h2>
+<p>Estudiantes: Keylor Rivera, Kevin Vega, José Pablo Alvarado, Mateo Heinz, Ana Laura Víquez</p>
+<h3 id="cinematica">Cinemática</h3>
+<p>La cinemática es la rama de la mecánica que estudia el movimiento de los cuerpos. Se enfoca en describir cómo se mueven los objetos en el espacio y el tiempo, utilizando conceptos como la posición, la velocidad y la aceleración.</p>
+<p>Cuando el movimiento de una particula es con velocidad constante, es decir cuando la aceleración es cero, este movimiento se denomina movimiento rectilíneo uniforme y la ecuación que describe la posición de una partícula esta descrita por:</p>
+<div class="arithmatex">\[ 
+x = x_0 + v_0t 
+\]</div>
+<p>Donde x es la posición, x_0 la posición inicial, v_0 la velocidad inicial y t el tiempo.</p>
+<p>El momento p, esta definido como:
+$$ 
+p = mv
+$$
+Donde m es la masa de la particula.</p>
+<p>La energía cinética K, de la partícula es descrita por: 
+$$
+K = \frac{1}{2}mv^2
+$$</p>
+<h3 id="colisiones-elasticas-en-una-dimension">Colisiones elásticas en una dimensión</h3>
+<p>Cuando 2 partículas A y B chocan, y la fuerza entre los dos es conservativa, se dice que el choque es elástico. En este tipo de choques la energía cinética del sistema es la misma antes y después del choque, por lo que el momento y la energía cinética de cada partícula se conserva:</p>
+<div class="arithmatex">\[
+m_Av_{A1} + m_Bv_{B1} = m_Av_{A2}+ m_Bv_{B2}
+\]</div>
+<div class="arithmatex">\[
+\frac{1}{2}m_Av_{A1}^2 + \frac{1}{2}m_Bv_{B1}^2 = \frac{1}{2}m_Av_{A2}^2 + \frac{1}{2}m_Bv_{B2}^2
+\]</div>
+<p>Combinando estas dos ecuaciones se obtienen las velocidades v_A2 y v_B2:</p>
+<div class="arithmatex">\[
+v_{A2} = \frac{v_{A1}(m_A - m_B) + 2m_Bv_{B1}}{m_A + m_B}
+\]</div>
+<div class="arithmatex">\[
+v_{B2} = \frac{v_{B1}(m_B - m_A) + 2m_Av_{A1}}{m_A + m_B}
+\]</div>
+<h3 id="colisiones-elasticas-en-dos-dimensiones">Colisiones elásticas en dos dimensiones</h3>
+<p>Si se considera la colisión elástica entre dos discos sólidos, hay que considerar 2 componentes para la velocidad de cada disco. Ahora si proyectamos los componentes de velocidad de los discos sobre los vectores perpendiculares y tangentes a la superficie de colisión, podemos utilizar la componente de velocidad perpendicular y tratarla como en una colisión de una dimensión.</p>
+<p>Para calcular las velocidades de dos entre dos discos sólidos tras una colisión elástica, sin el uso de trigonometría, se puede aplicar lo siguiente. Básicamente se hace a partir de un cambio de coordenadas, los cuales están determinados por los vectores normales y tangenciales a la superficie de choque de los discos. Para el eje tangencial no hay ninguna fuerza involucrada, por lo que su rapidez en ese eje se mantiene constante. Para el eje normal, donde está la fuerza del choque, tan solo se analiza como una colisión en una dimensión, lo que facilita muchísimo el cálculo. Este es el proceso, inicialmente hay que calcular el vector normal a la colisión, este será dado por la distancia entre los centros de cada disco, si tenemos el disco A y el disco B, y sus centros C están dados en coordenadas de la siguiente manera:</p>
+<div class="arithmatex">\[
+C_A = (x_a,y_a) 
+\]</div>
+<div class="arithmatex">\[
+C_B = (x_b,y_b)
+\]</div>
+<p>Entonces, el vector normal será:</p>
+<div class="arithmatex">\[
+\vec{n} = C_A - C_B = (x_a - x_b,y_a - y_b) = (n_x,n_y)
+\]</div>
+<p>Y de forma unitaria sería: </p>
+<div class="arithmatex">\[
+\hat{n} = \frac{\vec{n}}{||\vec{n}||} = \frac{(n_x,n_y)}{\sqrt{n_x^2 + n_y^2}}
+\]</div>
+<p>Ahora es necesario el vector tangente a las superficies, el cual es simplemente una rotación de 90 grados del vector normal, o que básicamente la primera componente del vector tangente es el negativo de la segunda componente del vector normal, y la segunda componente del tangente es igual a la primera del normal. </p>
+<div class="arithmatex">\[
+\hat{t} = \frac{\vec{t}}{||\vec{n}||} = \frac{(-n_y,n_x)}{\sqrt{n_x^2 + n_y^2}}
+\]</div>
+<p>Ahora se establecen los vectores de velocidad con respecto al eje de coordenadas original.</p>
+<div class="arithmatex">\[
+\vec{v}_{A1} = (v_{ax},v_{ay})
+\]</div>
+<div class="arithmatex">\[
+\vec{v}_{B1}= (v_{bx},v_{by})
+\]</div>
+<p>A continuación se deben adaptar las componentes de estos vectores en las componentes del nuevo sistema de coordenadas a partir de proyecciones sobre los ejes normales y tangentes, o productos punto con estos. Al crear un sistema de coordenadas de esta forma, se obtiene que la velocidad relacionada al eje normal en ambos discos se tratará como si de una colisión unidimensional se tratase, mientras que para la velocidad en el eje tangente, se mantendrá constante pues no hay fuerza actuando en esa dirección. Sea el subíndice <span class="arithmatex">\(n\)</span> con respecto a la normal y <span class="arithmatex">\(t\)</span> con respecto a la tangente. Las componentes de las velocidades de <span class="arithmatex">\(A\)</span> y <span class="arithmatex">\(B\)</span> antes de la colisión son:</p>
+<div class="arithmatex">\[
+v_{An1} = \vec{v}_A \cdot \hat{n}
+\]</div>
+<div class="arithmatex">\[
+v_{At1} = \vec{v}_A \cdot \hat{t} = v_{At2} (constante)
+\]</div>
+<div class="arithmatex">\[
+v_{Bn1} = \vec{v}_B \cdot \hat{n}
+\]</div>
+<div class="arithmatex">\[
+v_{Bt1} = \vec{v}_B \cdot \hat{t} = v_{Bt2} (constante)
+\]</div>
+<p>Tras el choque, la velocidad tangencial será exactamente la misma, ya que no hay fuerza que altere su trayectoria. En el caso de la componente normal, la velocidad tras el choque está dada por las siguientes expresiones:</p>
+<div class="arithmatex">\[
+v_{An2} = \frac{v_{An1}(m_A - m_B) + 2m_Bv_{Bn1}}{m_A + m_B}
+\]</div>
+<div class="arithmatex">\[
+v_{Bn2} = \frac{v_{Bn1}(m_B - m_A) + 2m_Av_{An1}}{m_A + m_B}
+\]</div>
+<p>Estas son las componentes normales del vector velocidad tras la colisión de ambos cuerpos, para hacerlos de nuevo como vectores se toma multiplican por el vector correspondiente que les da su dirección:</p>
+<div class="arithmatex">\[
+\vec{v}_{An2} = {v}_{An2} \hat{n}
+\]</div>
+<div class="arithmatex">\[
+\vec{v}_{At2} = {v}_{At2} \hat{t}
+\]</div>
+<div class="arithmatex">\[
+\vec{v}_{Bn2} = {v}_{Bn2} \hat{n}
+\]</div>
+<div class="arithmatex">\[
+\vec{v}_{Bt2} = {v}_{Bt2} \hat{t}
+\]</div>
+<p>Finalmente, la velocidad tras la colisión en el sistema de coordenadas original será igual a la suma vectorial de la parte normal más la parte tangente:</p>
+<div class="arithmatex">\[
+\vec{v}_{A2} = \vec{v}_{An2} + \vec{v}_{At2}
+\]</div>
+<div class="arithmatex">\[
+\vec{v}_{B2} = \vec{v}_{Bn2} + \vec{v}_{Bt2}
+\]</div>
+<h3 id="bibliografia">Bibliografía</h3>
+<p>Resnick R, Halliday D, Krane KS. Física Volumen 1. Continental; 2001.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

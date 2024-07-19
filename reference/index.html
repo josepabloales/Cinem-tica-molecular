@@ -1,0 +1,2957 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+    
+    
+      
+        <title>Documentación - Dinámica molecular en dos dimensiones (simulación en python)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentacion" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Dinámica molecular en dos dimensiones (simulación en python)" class="md-header__button md-logo" aria-label="Dinámica molecular en dos dimensiones (simulación en python)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dinámica molecular en dos dimensiones (simulación en python)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documentación
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Dinámica molecular en dos dimensiones (simulación en python)" class="md-nav__button md-logo" aria-label="Dinámica molecular en dos dimensiones (simulación en python)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Dinámica molecular en dos dimensiones (simulación en python)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Marco Teórico
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Documentación
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Documentación
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-programa-simula-4-discos-solidos-de-radio-r-que-se-mueven-sin-friccion-ni-momento-angular-dentro-de-una-caja-de-longitud-unitaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      El programa simula 4 discos sólidos de radio r que se mueven sin fricción ni momento angular dentro de una caja de longitud unitaria.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particula
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Particula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.display" class="md-nav__link">
+    <span class="md-ellipsis">
+      display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.mover" class="md-nav__link">
+    <span class="md-ellipsis">
+      mover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.tiempo_a_pared" class="md-nav__link">
+    <span class="md-ellipsis">
+      tiempo_a_pared
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.tiempo_a_pares" class="md-nav__link">
+    <span class="md-ellipsis">
+      tiempo_a_pares
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.actualizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      actualizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.choque_elastico" class="md-nav__link">
+    <span class="md-ellipsis">
+      choque_elastico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.generar_densidad_probabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      generar_densidad_probabilidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.inicializar_particulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      inicializar_particulas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.rebotar_pared" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebotar_pared
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-programa-simula-4-discos-solidos-de-radio-r-que-se-mueven-sin-friccion-ni-momento-angular-dentro-de-una-caja-de-longitud-unitaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      El programa simula 4 discos sólidos de radio r que se mueven sin fricción ni momento angular dentro de una caja de longitud unitaria.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      proyecto
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particula
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Particula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.__init__" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.display" class="md-nav__link">
+    <span class="md-ellipsis">
+      display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.mover" class="md-nav__link">
+    <span class="md-ellipsis">
+      mover
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.tiempo_a_pared" class="md-nav__link">
+    <span class="md-ellipsis">
+      tiempo_a_pared
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discos.proyecto.Particula.tiempo_a_pares" class="md-nav__link">
+    <span class="md-ellipsis">
+      tiempo_a_pares
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.actualizar" class="md-nav__link">
+    <span class="md-ellipsis">
+      actualizar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.choque_elastico" class="md-nav__link">
+    <span class="md-ellipsis">
+      choque_elastico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.generar_densidad_probabilidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      generar_densidad_probabilidad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.inicializar_particulas" class="md-nav__link">
+    <span class="md-ellipsis">
+      inicializar_particulas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discos.proyecto.rebotar_pared" class="md-nav__link">
+    <span class="md-ellipsis">
+      rebotar_pared
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="documentacion">Documentación</h1>
+<h2 id="el-programa-simula-4-discos-solidos-de-radio-r-que-se-mueven-sin-friccion-ni-momento-angular-dentro-de-una-caja-de-longitud-unitaria">El programa simula 4 discos sólidos de radio r que se mueven sin fricción ni momento angular dentro de una caja de longitud unitaria.</h2>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="discos.proyecto"></a>
+    <div class="doc doc-contents first">
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="discos.proyecto.Particula" class="doc doc-heading">
+            <code>Particula</code>
+
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+
+              <details class="quote">
+                <summary>Source code in <code>discos/proyecto.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Particula</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">rad</span><span class="p">,</span> <span class="n">masa</span><span class="p">,</span> <span class="n">rapidez</span><span class="p">,</span> <span class="n">ang</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Constructor que inicializa un disco con una posición, radio, masa, rapidez, angulo y color.</span>
+<span class="sd">           Además asigana una variable de velocidad v, definida como:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           v = (rapidez * cos(ang), rapidez * sin(ang))</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Donde ang es el ángulo en radianes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            pos (list): La posición inicial del disco en [x, y]</span>
+<span class="sd">            rad (float): El radio del disco</span>
+<span class="sd">            masa (float): La masa de del disco</span>
+<span class="sd">            rapidez (float): La rapidez del disco</span>
+<span class="sd">            ang (float): El ángulo de la velocidad del disco en radianes</span>
+<span class="sd">            color (str): El color del disco para la visualización</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">=</span> <span class="n">rad</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">masa</span> <span class="o">=</span> <span class="n">masa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ang</span> <span class="o">=</span> <span class="n">ang</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rapidez</span> <span class="o">=</span> <span class="n">rapidez</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">rapidez</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="n">rapidez</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">mover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Esta función es un método, actualiza la posición de los discos siguiendo la ecuación</span>
+<span class="sd">           de posición del movimiento rectilíneo uniforme:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           x = x_{0} + v_{0}t</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Donde x es la posición (puede tomar en el eje x y en el eje y), x{0} la posición inicial y t el tiempo.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            dt (float): El intervalo de tiempo durante el cual se actualiza la posición</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+
+    <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Función que dibuja el disco con la flecha que representa su velocidad, en el gráfico.</span>
+<span class="sd">           Mantiene una longitud fija para la flecha y da la dirección de la flecha según el</span>
+<span class="sd">           ángulo de la velocidad.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ax (matplotlib.axes.Axes): El objeto de los ejes en los que se dibuja los discos</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">circulo</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circulo</span><span class="p">)</span>
+        <span class="c1"># Longitud fija para la flecha</span>
+        <span class="n">longitud_flecha</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="c1"># Dirección de la flecha según el ángulo de la velocidad</span>
+        <span class="n">direccion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">final_pos</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">longitud_flecha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">direccion</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">longitud_flecha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">direccion</span><span class="p">)]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">final_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">final_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tiempo_a_pared</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Esta función calcula el mínimo tiempo de colisión entre un disco y las paredes de la caja.</span>
+<span class="sd">           Para esto calcula los tiempos de colision con cada pared y toma el menor de estos tiempos.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            size (list): Tamaño de la caja en [x, y]</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float (float): El tiempo hasta la colisión con la pared más cercana</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">tx_derecha</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="n">tx_izquierda</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="n">ty_arriba</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="n">ty_abajo</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">tx_derecha</span><span class="p">,</span> <span class="n">tx_izquierda</span><span class="p">,</span> <span class="n">ty_arriba</span><span class="p">,</span> <span class="n">ty_abajo</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">tiempo_a_pares</span><span class="p">(</span><span class="n">part_a</span><span class="p">,</span> <span class="n">part_b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Es una función que se utiliza para declarar un método estático dentro de una clase.</span>
+<span class="sd">           Calcula el tiempo hasta la colisión entre dos discos.</span>
+<span class="sd">           En este caso indica que pair_time es un método estático,</span>
+<span class="sd">           lo que significa que no requiere una instancia de la clase para ser llamado.</span>
+<span class="sd">           Sabemos que una colisión ocurre cuando la distancia del centro de cada partícula</span>
+<span class="sd">           a la otra es la suma de ambos radios R:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           R = r_{a} + r_{b}</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Ahora para encontrar la ecuación cuadrática que determina el tiempo de colisión hacemos lo siguiente:</span>
+<span class="sd">           Como estudiamos esto con movimiento relativo, analizamos que este R como la suma de los radios, se cumple cuando:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           r(0) + vt </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Entonces ahora podemos partir de:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">	   \|r(0) + v t \|^2 =  R^2 </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Por lo que:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           (r(0) + v t)^2 = R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           \|r(0)\|^2 + 2 r(0) v t + \|v\|^2 t^2 = R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           \| v \|^2 t^2 + 2 r(0) v t + \| r(0) \|^2 - R^2 = 0</span>
+<span class="sd">	   $$</span>
+
+<span class="sd">           Así, la ecuación cuadrática que determina el tiempo de colisión es:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           a t^2 + b t + c = 0</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           donde </span>
+
+<span class="sd">           $$</span>
+<span class="sd">           a = \|v\|^2 </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           b = 2 (v * r(0))</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           c = \| r(0) \|^2 - R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Ahora, aplicando esta física al código tenemos:</span>
+
+<span class="sd">           det es el discriminante de la ecuación cuadrática que se resolverá para encontrar los tiempos de colisión.</span>
+<span class="sd">           Este valor determina si hay soluciones reales (y por lo tanto colisiones):</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           det = (2 * b)^2 - 4 * \|v\|^2  * (\|r(0)\|^2  - R^2)</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Verificamos si hay soluciones reales (o colisión posible) y si las partículas se están acercando una a la otra (b &lt; 0.0).</span>
+<span class="sd">           sqrt_det calcula la raíz cuadrada del discriminante. Esto para poder resolver la ecuación cuadrática por fórmula general.</span>
+<span class="sd">           del_t1 y del_t2 son las dos soluciones de la ecuación cuadrática que representan los tiempos en los que las partículas podrían colisionar.</span>
+
+<span class="sd">           Luego se selecciona el primer momento futuro en el que ocurre la colisión (el menor tiempo no negativo).</span>
+<span class="sd">           Si ambos tiempos son negativos o si no hay soluciones reales, del_t se mantiene como infinito (float(&#39;inf&#39;)),</span>
+<span class="sd">           indicando que no hay colisión en el futuro.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            part_a (Particula): El primer disco</span>
+<span class="sd">            part_b (Particula): El segundo disco</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float (float): El tiempo hasta la colisión entre dos discos, o infinito si no colisionan</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">del_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_b</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part_b</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">del_x_sq</span> <span class="o">=</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">del_v</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_b</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part_b</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">del_v_sq</span> <span class="o">=</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">sum_rad</span> <span class="o">=</span> <span class="n">part_a</span><span class="o">.</span><span class="n">rad</span> <span class="o">+</span> <span class="n">part_b</span><span class="o">.</span><span class="n">rad</span>
+        <span class="n">det</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">del_v_sq</span> <span class="o">*</span> <span class="p">(</span><span class="n">del_x_sq</span> <span class="o">-</span> <span class="n">sum_rad</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">det</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">sqrt_det</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">det</span><span class="p">)</span>
+            <span class="n">del_t1</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">sqrt_det</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">del_v_sq</span><span class="p">)</span>
+            <span class="n">del_t2</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">sqrt_det</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">del_v_sq</span><span class="p">)</span>
+
+            <span class="c1"># Seleccionar el tiempo mínimo no negativo</span>
+            <span class="n">del_t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">del_t1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">del_t</span> <span class="o">=</span> <span class="n">del_t1</span>
+            <span class="k">if</span> <span class="n">del_t2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">del_t2</span> <span class="o">&lt;</span> <span class="n">del_t</span><span class="p">:</span>
+                <span class="n">del_t</span> <span class="o">=</span> <span class="n">del_t2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">del_t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">del_t</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="discos.proyecto.Particula.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">rad</span><span class="p">,</span> <span class="n">masa</span><span class="p">,</span> <span class="n">rapidez</span><span class="p">,</span> <span class="n">ang</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Constructor que inicializa un disco con una posición, radio, masa, rapidez, angulo y color.
+   Además asigana una variable de velocidad v, definida como:</p>
+<p>$$
+   v = (rapidez * cos(ang), rapidez * sin(ang))
+   $$</p>
+<p>Donde ang es el ángulo en radianes.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>pos</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>La posición inicial del disco en [x, y]</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>rad</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El radio del disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>masa</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>La masa de del disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>rapidez</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>La rapidez del disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>ang</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El ángulo de la velocidad del disco en radianes</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>color</code></td>
+            <td>
+                  <code>str</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El color del disco para la visualización</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">rad</span><span class="p">,</span> <span class="n">masa</span><span class="p">,</span> <span class="n">rapidez</span><span class="p">,</span> <span class="n">ang</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Constructor que inicializa un disco con una posición, radio, masa, rapidez, angulo y color.</span>
+<span class="sd">       Además asigana una variable de velocidad v, definida como:</span>
+
+<span class="sd">       $$</span>
+<span class="sd">       v = (rapidez * cos(ang), rapidez * sin(ang))</span>
+<span class="sd">       $$</span>
+
+<span class="sd">       Donde ang es el ángulo en radianes.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        pos (list): La posición inicial del disco en [x, y]</span>
+<span class="sd">        rad (float): El radio del disco</span>
+<span class="sd">        masa (float): La masa de del disco</span>
+<span class="sd">        rapidez (float): La rapidez del disco</span>
+<span class="sd">        ang (float): El ángulo de la velocidad del disco en radianes</span>
+<span class="sd">        color (str): El color del disco para la visualización</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span>  
+    <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">=</span> <span class="n">rad</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">masa</span> <span class="o">=</span> <span class="n">masa</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ang</span> <span class="o">=</span> <span class="n">ang</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">rapidez</span> <span class="o">=</span> <span class="n">rapidez</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">rapidez</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="n">rapidez</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">)]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="discos.proyecto.Particula.display" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">display</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Función que dibuja el disco con la flecha que representa su velocidad, en el gráfico.
+   Mantiene una longitud fija para la flecha y da la dirección de la flecha según el
+   ángulo de la velocidad.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>ax</code></td>
+            <td>
+                  <code><span title="matplotlib.axes.Axes">Axes</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El objeto de los ejes en los que se dibuja los discos</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Función que dibuja el disco con la flecha que representa su velocidad, en el gráfico.</span>
+<span class="sd">       Mantiene una longitud fija para la flecha y da la dirección de la flecha según el</span>
+<span class="sd">       ángulo de la velocidad.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): El objeto de los ejes en los que se dibuja los discos</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">circulo</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circulo</span><span class="p">)</span>
+    <span class="c1"># Longitud fija para la flecha</span>
+    <span class="n">longitud_flecha</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="c1"># Dirección de la flecha según el ángulo de la velocidad</span>
+    <span class="n">direccion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">final_pos</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">longitud_flecha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">direccion</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">longitud_flecha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">direccion</span><span class="p">)]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">final_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">final_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="discos.proyecto.Particula.mover" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">mover</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función es un método, actualiza la posición de los discos siguiendo la ecuación
+   de posición del movimiento rectilíneo uniforme:</p>
+<p>$$
+   x = x_{0} + v_{0}t
+   $$</p>
+<p>Donde x es la posición (puede tomar en el eje x y en el eje y), x{0} la posición inicial y t el tiempo.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>dt</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El intervalo de tiempo durante el cual se actualiza la posición</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función es un método, actualiza la posición de los discos siguiendo la ecuación</span>
+<span class="sd">       de posición del movimiento rectilíneo uniforme:</span>
+
+<span class="sd">       $$</span>
+<span class="sd">       x = x_{0} + v_{0}t</span>
+<span class="sd">       $$</span>
+
+<span class="sd">       Donde x es la posición (puede tomar en el eje x y en el eje y), x{0} la posición inicial y t el tiempo.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dt (float): El intervalo de tiempo durante el cual se actualiza la posición</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">dt</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="discos.proyecto.Particula.tiempo_a_pared" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">tiempo_a_pared</span><span class="p">(</span><span class="n">size</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función calcula el mínimo tiempo de colisión entre un disco y las paredes de la caja.
+   Para esto calcula los tiempos de colision con cada pared y toma el menor de estos tiempos.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>size</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tamaño de la caja en [x, y]</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>float</code></td>            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El tiempo hasta la colisión con la pared más cercana</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tiempo_a_pared</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función calcula el mínimo tiempo de colisión entre un disco y las paredes de la caja.</span>
+<span class="sd">       Para esto calcula los tiempos de colision con cada pared y toma el menor de estos tiempos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        size (list): Tamaño de la caja en [x, y]</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float (float): El tiempo hasta la colisión con la pared más cercana</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">tx_derecha</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="n">tx_izquierda</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="n">ty_arriba</span> <span class="o">=</span> <span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="n">ty_abajo</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">tx_derecha</span><span class="p">,</span> <span class="n">tx_izquierda</span><span class="p">,</span> <span class="n">ty_arriba</span><span class="p">,</span> <span class="n">ty_abajo</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="discos.proyecto.Particula.tiempo_a_pares" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">tiempo_a_pares</span><span class="p">(</span><span class="n">part_a</span><span class="p">,</span> <span class="n">part_b</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Es una función que se utiliza para declarar un método estático dentro de una clase.
+   Calcula el tiempo hasta la colisión entre dos discos.
+   En este caso indica que pair_time es un método estático,
+   lo que significa que no requiere una instancia de la clase para ser llamado.
+   Sabemos que una colisión ocurre cuando la distancia del centro de cada partícula
+   a la otra es la suma de ambos radios R:</p>
+<p>$$
+   R = r_{a} + r_{b}
+   $$</p>
+<p>Ahora para encontrar la ecuación cuadrática que determina el tiempo de colisión hacemos lo siguiente:
+   Como estudiamos esto con movimiento relativo, analizamos que este R como la suma de los radios, se cumple cuando:</p>
+<p>$$
+   r(0) + vt 
+   $$</p>
+<p>Entonces ahora podemos partir de:</p>
+<p>$$
+   |r(0) + v t |^2 =  R^2 
+   $$</p>
+<p>Por lo que:</p>
+<p>$$
+   (r(0) + v t)^2 = R^2
+   $$</p>
+<p>$$
+   |r(0)|^2 + 2 r(0) v t + |v|^2 t^2 = R^2
+   $$</p>
+<p>$$
+   | v |^2 t^2 + 2 r(0) v t + | r(0) |^2 - R^2 = 0
+   $$</p>
+<p>Así, la ecuación cuadrática que determina el tiempo de colisión es:</p>
+<p>$$
+   a t^2 + b t + c = 0
+   $$</p>
+<p>donde </p>
+<p>$$
+   a = |v|^2 
+   $$</p>
+<p>$$
+   b = 2 (v * r(0))
+   $$</p>
+<p>$$
+   c = | r(0) |^2 - R^2
+   $$</p>
+<p>Ahora, aplicando esta física al código tenemos:</p>
+<p>det es el discriminante de la ecuación cuadrática que se resolverá para encontrar los tiempos de colisión.
+   Este valor determina si hay soluciones reales (y por lo tanto colisiones):</p>
+<p>$$
+   det = (2 * b)^2 - 4 * |v|^2  * (|r(0)|^2  - R^2)
+   $$</p>
+<p>Verificamos si hay soluciones reales (o colisión posible) y si las partículas se están acercando una a la otra (b &lt; 0.0).
+   sqrt_det calcula la raíz cuadrada del discriminante. Esto para poder resolver la ecuación cuadrática por fórmula general.
+   del_t1 y del_t2 son las dos soluciones de la ecuación cuadrática que representan los tiempos en los que las partículas podrían colisionar.</p>
+<p>Luego se selecciona el primer momento futuro en el que ocurre la colisión (el menor tiempo no negativo).
+   Si ambos tiempos son negativos o si no hay soluciones reales, del_t se mantiene como infinito (float('inf')),
+   indicando que no hay colisión en el futuro.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>part_a</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="discos.proyecto.Particula" href="#discos.proyecto.Particula">Particula</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El primer disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>part_b</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="discos.proyecto.Particula" href="#discos.proyecto.Particula">Particula</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El segundo disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>float</code></td>            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El tiempo hasta la colisión entre dos discos, o infinito si no colisionan</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">tiempo_a_pares</span><span class="p">(</span><span class="n">part_a</span><span class="p">,</span> <span class="n">part_b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Es una función que se utiliza para declarar un método estático dentro de una clase.</span>
+<span class="sd">           Calcula el tiempo hasta la colisión entre dos discos.</span>
+<span class="sd">           En este caso indica que pair_time es un método estático,</span>
+<span class="sd">           lo que significa que no requiere una instancia de la clase para ser llamado.</span>
+<span class="sd">           Sabemos que una colisión ocurre cuando la distancia del centro de cada partícula</span>
+<span class="sd">           a la otra es la suma de ambos radios R:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           R = r_{a} + r_{b}</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Ahora para encontrar la ecuación cuadrática que determina el tiempo de colisión hacemos lo siguiente:</span>
+<span class="sd">           Como estudiamos esto con movimiento relativo, analizamos que este R como la suma de los radios, se cumple cuando:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           r(0) + vt </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Entonces ahora podemos partir de:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">	   \|r(0) + v t \|^2 =  R^2 </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Por lo que:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           (r(0) + v t)^2 = R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           \|r(0)\|^2 + 2 r(0) v t + \|v\|^2 t^2 = R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           \| v \|^2 t^2 + 2 r(0) v t + \| r(0) \|^2 - R^2 = 0</span>
+<span class="sd">	   $$</span>
+
+<span class="sd">           Así, la ecuación cuadrática que determina el tiempo de colisión es:</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           a t^2 + b t + c = 0</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           donde </span>
+
+<span class="sd">           $$</span>
+<span class="sd">           a = \|v\|^2 </span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           b = 2 (v * r(0))</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           c = \| r(0) \|^2 - R^2</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Ahora, aplicando esta física al código tenemos:</span>
+
+<span class="sd">           det es el discriminante de la ecuación cuadrática que se resolverá para encontrar los tiempos de colisión.</span>
+<span class="sd">           Este valor determina si hay soluciones reales (y por lo tanto colisiones):</span>
+
+<span class="sd">           $$</span>
+<span class="sd">           det = (2 * b)^2 - 4 * \|v\|^2  * (\|r(0)\|^2  - R^2)</span>
+<span class="sd">           $$</span>
+
+<span class="sd">           Verificamos si hay soluciones reales (o colisión posible) y si las partículas se están acercando una a la otra (b &lt; 0.0).</span>
+<span class="sd">           sqrt_det calcula la raíz cuadrada del discriminante. Esto para poder resolver la ecuación cuadrática por fórmula general.</span>
+<span class="sd">           del_t1 y del_t2 son las dos soluciones de la ecuación cuadrática que representan los tiempos en los que las partículas podrían colisionar.</span>
+
+<span class="sd">           Luego se selecciona el primer momento futuro en el que ocurre la colisión (el menor tiempo no negativo).</span>
+<span class="sd">           Si ambos tiempos son negativos o si no hay soluciones reales, del_t se mantiene como infinito (float(&#39;inf&#39;)),</span>
+<span class="sd">           indicando que no hay colisión en el futuro.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            part_a (Particula): El primer disco</span>
+<span class="sd">            part_b (Particula): El segundo disco</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float (float): El tiempo hasta la colisión entre dos discos, o infinito si no colisionan</span>
+
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">del_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_b</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part_b</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">del_x_sq</span> <span class="o">=</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">del_v</span> <span class="o">=</span> <span class="p">[</span><span class="n">part_b</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part_b</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">part_a</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">del_v_sq</span> <span class="o">=</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">del_v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">del_x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">sum_rad</span> <span class="o">=</span> <span class="n">part_a</span><span class="o">.</span><span class="n">rad</span> <span class="o">+</span> <span class="n">part_b</span><span class="o">.</span><span class="n">rad</span>
+        <span class="n">det</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">del_v_sq</span> <span class="o">*</span> <span class="p">(</span><span class="n">del_x_sq</span> <span class="o">-</span> <span class="n">sum_rad</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">det</span> <span class="o">&gt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">b</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">sqrt_det</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">det</span><span class="p">)</span>
+            <span class="n">del_t1</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">sqrt_det</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">del_v_sq</span><span class="p">)</span>
+            <span class="n">del_t2</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">sqrt_det</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">del_v_sq</span><span class="p">)</span>
+
+            <span class="c1"># Seleccionar el tiempo mínimo no negativo</span>
+            <span class="n">del_t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">del_t1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">del_t</span> <span class="o">=</span> <span class="n">del_t1</span>
+            <span class="k">if</span> <span class="n">del_t2</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">del_t2</span> <span class="o">&lt;</span> <span class="n">del_t</span><span class="p">:</span>
+                <span class="n">del_t</span> <span class="o">=</span> <span class="n">del_t2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">del_t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">del_t</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="discos.proyecto.actualizar" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">actualizar</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">particulas</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">posiciones_x</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función va creando y actualizando los frames para hacer evolucionar la simulación en el tiempo.
+Primero lmpia el gráfico, luego determina el tiempo mínimo hasta el proximo evento.
+Despúes mueve las partículas por el tiempo mínimo o dt, el que sea menor. </p>
+<p>Luego verifica y maneja las colisiones con las paredes. Si el tiempo mínimo es menor que el dt, entonces se
+da una colisión entre el disco y una pared. Si no es así, entonces el frame continua para que la simulación
+sea continua. Llama a la función rebotar_pared si hay un choque con una pared.</p>
+<p>Despúes verifica y maneja las colisiones entre discos y captura las posiciones en x de los discos.
+Si hay colisión entre discos entonces se llama a la función choque_elastico.
+Por último, dibuja los discos en la gráfica.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>frame</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>el número de frame</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>particulas</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>lista con los atributos de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>size</code></td>
+            <td>
+                  <code>tuple</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>el tamaño de la caja en x y y</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>ax</code></td>
+            <td>
+                  <code><span title="matplotlib.axes.Axes">Axes</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El objeto de los ejes en los que se dibuja los discos</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>posiciones_x</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>las posisciones en x de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>dt</code></td>
+            <td>
+                  <code>float</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>diferencial de tiempo, es la velocidad de evolución de la simulación</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">actualizar</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">particulas</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">posiciones_x</span><span class="p">,</span><span class="n">dt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función va creando y actualizando los frames para hacer evolucionar la simulación en el tiempo.</span>
+<span class="sd">       Primero lmpia el gráfico, luego determina el tiempo mínimo hasta el proximo evento.</span>
+<span class="sd">       Despúes mueve las partículas por el tiempo mínimo o dt, el que sea menor. </span>
+
+<span class="sd">       Luego verifica y maneja las colisiones con las paredes. Si el tiempo mínimo es menor que el dt, entonces se</span>
+<span class="sd">       da una colisión entre el disco y una pared. Si no es así, entonces el frame continua para que la simulación</span>
+<span class="sd">       sea continua. Llama a la función rebotar_pared si hay un choque con una pared.</span>
+
+<span class="sd">       Despúes verifica y maneja las colisiones entre discos y captura las posiciones en x de los discos.</span>
+<span class="sd">       Si hay colisión entre discos entonces se llama a la función choque_elastico.</span>
+<span class="sd">       Por último, dibuja los discos en la gráfica.</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">           frame (int): el número de frame</span>
+<span class="sd">           particulas (list): lista con los atributos de cada disco</span>
+<span class="sd">           size (tuple): el tamaño de la caja en x y y</span>
+<span class="sd">           ax (matplotlib.axes.Axes): El objeto de los ejes en los que se dibuja los discos</span>
+<span class="sd">           posiciones_x (list): las posisciones en x de cada disco</span>
+<span class="sd">           dt (float): diferencial de tiempo, es la velocidad de evolución de la simulación</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Limpiar el gráfico</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Determinar el tiempo mínimo hasta el próximo evento</span>
+    <span class="n">tiempos_pared</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">tiempo_a_pared</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particulas</span><span class="p">]</span>
+    <span class="n">tiempos_pareja</span> <span class="o">=</span> <span class="p">[</span><span class="n">Particula</span><span class="o">.</span><span class="n">tiempo_a_pares</span><span class="p">(</span><span class="n">particulas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">particulas</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">particulas</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">particulas</span><span class="p">))]</span>
+    <span class="n">all_tiempos</span> <span class="o">=</span> <span class="n">tiempos_pared</span> <span class="o">+</span> <span class="n">tiempos_pareja</span>
+    <span class="n">all_tiempos</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">min_tiempo</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">all_tiempos</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mf">1e-14</span> <span class="p">)</span>  <span class="c1"># Umbral de tiempo mínimo</span>
+
+    <span class="n">tiempo_mover</span><span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_tiempo</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="c1"># Mover las partículas</span>
+
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particulas</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">mover</span><span class="p">(</span><span class="n">tiempo_mover</span><span class="o">+</span><span class="mf">1e-15</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_tiempo</span> <span class="o">&lt;=</span> <span class="n">dt</span><span class="p">:</span>
+        <span class="c1"># Verificar colisiones con las paredes</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particulas</span><span class="p">:</span>
+            <span class="n">rebotar_pared</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+
+        <span class="c1"># Verificar colisiones entre partículas</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">particulas</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">particulas</span><span class="p">)):</span>
+                <span class="n">choque_elastico</span><span class="p">(</span><span class="n">particulas</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">particulas</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+
+    <span class="c1"># Capturar las posiciones en x de las partículas</span>
+    <span class="n">posiciones_x</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particulas</span><span class="p">])</span>
+
+    <span class="c1"># Dibujar las partículas</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">particulas</span><span class="p">:</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="discos.proyecto.choque_elastico" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">choque_elastico</span><span class="p">(</span><span class="n">part1</span><span class="p">,</span> <span class="n">part2</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función determina las nuevas velocidades de los discos A y B, si dos de ellos chocan entre sí.
+Se tiene la distancia d entre los discos: C_A - C_B, y esta es menor o igual a la suma de sus radios
+entonces es que hay un choque, y se realiza todo el siguiente procedimiento para determina las nuevas
+velocidades de los discos despues del choque:
+La norma de esta distancia d es:</p>
+<div class="arithmatex">\[
+\|d\| = \sqrt{\Delta{x}^2 + \Delta{y}^2}
+\]</div>
+<p>Si la distancia d, entre ellos es menor o igual a la suma de sus radios, entonces:
+Se normaliza el vector d, para tener un vector unitario perpendicular <span class="arithmatex">\(d_{n}\)</span>, a la superficie
+de choque entre discos:</p>
+<div class="arithmatex">\[
+d_{n} = d/(\|d\|)
+\]</div>
+<p>Se determina el vector unitario tangencial <span class="arithmatex">\(t_{n}\)</span>, a la superficie de choque entre los discos,
+como ya se tenia normalizado al vector perpendicular <span class="arithmatex">\(d_{n}\)</span> entonces:</p>
+<div class="arithmatex">\[
+t_{n} = (-\Delta{y},\Delta{x}) / \sqrt{\Delta{x}^2 + \Delta{y}^2}.
+\]</div>
+<p>Ahora se proyectan las velocidades en los vectores unitarios perpendiculares y tangenciales:</p>
+<div class="arithmatex">\[
+v_{An1} = v_{A} d_{n}
+\]</div>
+<div class="arithmatex">\[
+v_{At1} = v_{A} t_{n} = v_{At2}
+\]</div>
+<div class="arithmatex">\[
+v_{Bn1} = v_{B} d_{n}
+\]</div>
+<div class="arithmatex">\[
+v_{Bt1} = v_{B} t_{n} = v_{At2}
+\]</div>
+<p>Debido a que la velocidad tangencial es exactamente solo se calcularán la nueva velocidad perpendicular,
+las nuevas velocidades perpendiculares a la superficie de choque unidimensional serían:</p>
+<div class="arithmatex">\[
+v_{An2} = (v_{An1} (m_{A} - m_{B}) + 2m_{B}v_{Bn1}) / (m_{A} + m_{B})
+\]</div>
+<div class="arithmatex">\[
+v_{Bn2} = (v_{Bn1} (m_{B} - m_{A}) + 2m_{A}v_{An1}) / (m_{A} + m_{B})
+\]</div>
+<p>Estas serían las componentes normales del vector velocidad tras la colisión de ambos cuerpos,
+para hacerlos de nuevo como vectores se toma multiplican por el vector correspondiente que les da su dirección:</p>
+<div class="arithmatex">\[
+v_{An2} = v_{An2} d_{n}
+\]</div>
+<div class="arithmatex">\[
+v_{At2} = v_{At2} t_{t}
+\]</div>
+<div class="arithmatex">\[
+v_{Bn2} = v_{Bn2} d_{n}
+\]</div>
+<div class="arithmatex">\[
+v_{Bt2} = v_{Bt2} t_{t}
+\]</div>
+<p>Finalmente, las nuevas velocidades tras la colisión en el sistema de coordenadas original vendrian dadas por:</p>
+<div class="arithmatex">\[
+v_{A2} = v_{An2} + v_{At2}
+\]</div>
+<div class="arithmatex">\[
+v_{B2} = v_{Bn2} + v_{Bt2}
+\]</div>
+<p>Además esta función mueve ligeramente a los discos para que no se queden pegados en la simulación.
+Para esto, mueve al disco A una distancia d_{m} dada por:</p>
+<div class="arithmatex">\[
+d_{m} = d_{n} (rad_{1} + rad_{1} - \|d\|) / 2
+\]</div>
+<p>Y mueve al disco B en la dirección opuesta a A:</p>
+<div class="arithmatex">\[
+d_{m} = -d_{n} (rad_{1} + rad_{1} - \|d\|) / 2
+\]</div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>part1</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="discos.proyecto.Particula" href="#discos.proyecto.Particula">Particula</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El disco A del choque</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>part2</code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="discos.proyecto.Particula" href="#discos.proyecto.Particula">Particula</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>El disco B del choque</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">choque_elastico</span><span class="p">(</span><span class="n">part1</span><span class="p">,</span> <span class="n">part2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Esta función determina las nuevas velocidades de los discos A y B, si dos de ellos chocan entre sí.</span>
+<span class="sd">    Se tiene la distancia d entre los discos: C_A - C_B, y esta es menor o igual a la suma de sus radios</span>
+<span class="sd">    entonces es que hay un choque, y se realiza todo el siguiente procedimiento para determina las nuevas</span>
+<span class="sd">    velocidades de los discos despues del choque:</span>
+<span class="sd">    La norma de esta distancia d es:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    \|d\| = \sqrt{\Delta{x}^2 + \Delta{y}^2}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Si la distancia d, entre ellos es menor o igual a la suma de sus radios, entonces:</span>
+<span class="sd">    Se normaliza el vector d, para tener un vector unitario perpendicular $d_{n}$, a la superficie</span>
+<span class="sd">    de choque entre discos:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    d_{n} = d/(\|d\|)</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Se determina el vector unitario tangencial $t_{n}$, a la superficie de choque entre los discos,</span>
+<span class="sd">    como ya se tenia normalizado al vector perpendicular $d_{n}$ entonces:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    t_{n} = (-\Delta{y},\Delta{x}) / \sqrt{\Delta{x}^2 + \Delta{y}^2}.</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Ahora se proyectan las velocidades en los vectores unitarios perpendiculares y tangenciales:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{An1} = v_{A} d_{n}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{At1} = v_{A} t_{n} = v_{At2}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{Bn1} = v_{B} d_{n}</span>
+<span class="sd">    $$</span>
+
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{Bt1} = v_{B} t_{n} = v_{At2}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Debido a que la velocidad tangencial es exactamente solo se calcularán la nueva velocidad perpendicular,</span>
+<span class="sd">    las nuevas velocidades perpendiculares a la superficie de choque unidimensional serían:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{An2} = (v_{An1} (m_{A} - m_{B}) + 2m_{B}v_{Bn1}) / (m_{A} + m_{B})</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{Bn2} = (v_{Bn1} (m_{B} - m_{A}) + 2m_{A}v_{An1}) / (m_{A} + m_{B})</span>
+<span class="sd">    $$</span>
+
+
+<span class="sd">    Estas serían las componentes normales del vector velocidad tras la colisión de ambos cuerpos,</span>
+<span class="sd">    para hacerlos de nuevo como vectores se toma multiplican por el vector correspondiente que les da su dirección:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{An2} = v_{An2} d_{n}</span>
+<span class="sd">    $$</span>
+
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{At2} = v_{At2} t_{t}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{Bn2} = v_{Bn2} d_{n}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{Bt2} = v_{Bt2} t_{t}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Finalmente, las nuevas velocidades tras la colisión en el sistema de coordenadas original vendrian dadas por:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{A2} = v_{An2} + v_{At2}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    v_{B2} = v_{Bn2} + v_{Bt2}</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Además esta función mueve ligeramente a los discos para que no se queden pegados en la simulación.</span>
+<span class="sd">    Para esto, mueve al disco A una distancia d_{m} dada por:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    d_{m} = d_{n} (rad_{1} + rad_{1} - \|d\|) / 2</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Y mueve al disco B en la dirección opuesta a A:</span>
+
+<span class="sd">    $$</span>
+<span class="sd">    d_{m} = -d_{n} (rad_{1} + rad_{1} - \|d\|) / 2</span>
+<span class="sd">    $$</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        part1 (Particula): El disco A del choque</span>
+<span class="sd">        part2 (Particula): El disco B del choque</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">delta_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">part1</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">part2</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">part1</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">part2</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">delta_pos</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">part1</span><span class="o">.</span><span class="n">rad</span> <span class="o">+</span> <span class="n">part2</span><span class="o">.</span><span class="n">rad</span><span class="p">):</span>
+        <span class="c1"># Normalización del vector de diferencia de posición</span>
+        <span class="n">delta_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">dist</span><span class="p">,</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">dist</span><span class="p">]</span>
+
+        <span class="c1"># Vector unitario tangencial</span>
+        <span class="n">delta_tan</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="c1"># Proyecciones de velocidad</span>
+        <span class="n">v1n</span> <span class="o">=</span> <span class="n">part1</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">part1</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">v1t</span> <span class="o">=</span> <span class="n">part1</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">part1</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">v2n</span> <span class="o">=</span> <span class="n">part2</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">part2</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">v2t</span> <span class="o">=</span> <span class="n">part2</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">part2</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Nuevas velocidades normales usando colisión elástica unidimensional</span>
+        <span class="n">v1n_prima</span> <span class="o">=</span> <span class="p">(</span><span class="n">v1n</span> <span class="o">*</span> <span class="p">(</span><span class="n">part1</span><span class="o">.</span><span class="n">masa</span> <span class="o">-</span> <span class="n">part2</span><span class="o">.</span><span class="n">masa</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">part2</span><span class="o">.</span><span class="n">masa</span> <span class="o">*</span> <span class="n">v2n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">part1</span><span class="o">.</span><span class="n">masa</span> <span class="o">+</span> <span class="n">part2</span><span class="o">.</span><span class="n">masa</span><span class="p">)</span>
+        <span class="n">v2n_prima</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2n</span> <span class="o">*</span> <span class="p">(</span><span class="n">part2</span><span class="o">.</span><span class="n">masa</span> <span class="o">-</span> <span class="n">part1</span><span class="o">.</span><span class="n">masa</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">part1</span><span class="o">.</span><span class="n">masa</span> <span class="o">*</span> <span class="n">v1n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">part2</span><span class="o">.</span><span class="n">masa</span> <span class="o">+</span> <span class="n">part1</span><span class="o">.</span><span class="n">masa</span><span class="p">)</span>
+
+        <span class="c1"># Conversión a vectores</span>
+        <span class="n">v1n_prima_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">v1n_prima</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v1n_prima</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">v1t_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">v1t</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v1t</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">v2n_prima_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">v2n_prima</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v2n_prima</span> <span class="o">*</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">v2t_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">v2t</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v2t</span> <span class="o">*</span> <span class="n">delta_tan</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="c1"># Nuevas velocidades</span>
+        <span class="n">part1</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">v1n_prima_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v1t_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v1n_prima_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v1t_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">part2</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">v2n_prima_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">v2t_vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v2n_prima_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">v2t_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+
+        <span class="c1"># Mover ligeramente las partículas para evitar que se queden pegadas</span>
+        <span class="n">translape</span> <span class="o">=</span> <span class="n">part1</span><span class="o">.</span><span class="n">rad</span> <span class="o">+</span> <span class="n">part2</span><span class="o">.</span><span class="n">rad</span> <span class="o">-</span> <span class="n">dist</span>
+        <span class="n">mover</span> <span class="o">=</span> <span class="n">translape</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="n">part1</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">mover</span>
+        <span class="n">part1</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">mover</span>
+        <span class="n">part2</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">mover</span>
+        <span class="n">part2</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">delta_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">mover</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="discos.proyecto.generar_densidad_probabilidad" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">generar_densidad_probabilidad</span><span class="p">(</span><span class="n">posiciones_x</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función plotea la distribucion de la densidad de probabilidad de las posiciones en x y plotea un histograma de las posiciones en el eje x.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>posiciones_x</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Primer argumento (una lista con el valor de las posiciones en x)</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generar_densidad_probabilidad</span><span class="p">(</span><span class="n">posiciones_x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función plotea la distribucion de la densidad de probabilidad de las posiciones en x y plotea un histograma de las posiciones en el eje x.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        posiciones_x (list):  Primer argumento (una lista con el valor de las posiciones en x)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Subplot 1: Distribución de Densidad de Probabilidad</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">posiciones_x</span><span class="p">,</span> <span class="n">bw_adjust</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Densidad de Probabilidad de las Posiciones en x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Posición en x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Densidad de Probabilidad&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Subplot 2: Histograma de las Posiciones en x</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">posiciones_x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histograma de las Posiciones en x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Posición en x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="discos.proyecto.inicializar_particulas" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">inicializar_particulas</span><span class="p">(</span><span class="n">posiciones</span><span class="p">,</span> <span class="n">radios</span><span class="p">,</span> <span class="n">velocidades</span><span class="p">,</span> <span class="n">angulos</span><span class="p">,</span> <span class="n">colores</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función inicializa los atritibutos: posiciones, radios, velocidades, ángulos y colores, de los discos.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>posiciones</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lista de las posiciones de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>radios</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lista de los radios de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>velocidades</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lista de las velocidades de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>angulos</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lista de los ángulos de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>colores</code></td>
+            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Lista de los colores de cada disco</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+<th>Name</th>          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+<td><code>particulas</code></td>            <td>
+                  <code>list</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Los atritibutos: posiciones, radios, masas (se definió una masa unitaria), velocidades, angulos y colores, de los discos</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">inicializar_particulas</span><span class="p">(</span><span class="n">posiciones</span><span class="p">,</span> <span class="n">radios</span><span class="p">,</span> <span class="n">velocidades</span><span class="p">,</span> <span class="n">angulos</span><span class="p">,</span> <span class="n">colores</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función inicializa los atritibutos: posiciones, radios, velocidades, ángulos y colores, de los discos.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        posiciones (list): Lista de las posiciones de cada disco</span>
+<span class="sd">        radios (list): Lista de los radios de cada disco</span>
+<span class="sd">        velocidades (list): Lista de las velocidades de cada disco</span>
+<span class="sd">        angulos (list): Lista de los ángulos de cada disco</span>
+<span class="sd">        colores (list): Lista de los colores de cada disco</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        particulas (list): Los atritibutos: posiciones, radios, masas (se definió una masa unitaria), velocidades, angulos y colores, de los discos</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">particulas</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">posiciones</span><span class="p">)):</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">posiciones</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">radio</span> <span class="o">=</span> <span class="n">radios</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">rapidez</span> <span class="o">=</span> <span class="n">velocidades</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ang</span> <span class="o">=</span> <span class="n">angulos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">colores</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colores</span><span class="p">)]</span>
+        <span class="n">masa</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Asumimos masa unitaria para simplicidad</span>
+        <span class="n">particulas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Particula</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">radio</span><span class="p">,</span> <span class="n">masa</span><span class="p">,</span> <span class="n">rapidez</span><span class="p">,</span> <span class="n">ang</span><span class="p">,</span> <span class="n">color</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">particulas</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="discos.proyecto.rebotar_pared" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">rebotar_pared</span><span class="p">(</span><span class="n">particula</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Esta función describe los choques de las partículas con la pared.
+Se asegura de que las partículas reboten elásticamente contra las paredes de la caja.
+Verifica cada componente de la posición respecto a los límites de la caja y
+ajusta tanto la velocidad como la posición de la partícula en caso de una colisión con una pared.</p>
+<p>La condición de si la posiciõn del disco en x es mayor a la longitud de una de las caras de la caja menos el radio
+del disco verifica si la posición en x de la partícula + su radio
+excede el límite derecho de la caja. Si ese es el caso, entonces choca con la pared derecha y entonces</p>
+<div class="arithmatex">\[
+v_{x} = -v{x}
+\]</div>
+<p>Y</p>
+<div class="arithmatex">\[
+x_{0} = size[0] - r
+\]</div>
+<p>Donde v es la velocidad del disco, size[0] la longitud de la caja en x
+y r el radio del disco.
+Esta función invierte la componente x de la velocidad (simulando un rebote elástico) y
+ajusta la posición x para que la partícula no se salga de la caja. </p>
+<p>Esta misma dinámica cumple con todos los condicionales, cada uno analizando el choque con una pared en específico.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>partícula</code></td>
+            <td>
+                  <code>class</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>representa a una partícula individual dentro de la simulación. Se utiliza para poder modificar las propiedades de una partícula (en este caso su posición y velocidad) al detectar colisiones con las paredes de la caja.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>size</code></td>
+            <td>
+                  <code>tuple</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Tupla de dos elementos ´(ancho, alto)´ que representa las dimensiones de la caja en la que se están moviendo las partículas. (´size[0]´ es el ancho de la caja y ´size[1]´ es la altura de la caja, en este caso nuestra caja es de medida 1x1). Se utiliza para delimitar las paredes de la caja y así poder verificar las colisiones con ésta.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>discos/proyecto.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rebotar_pared</span><span class="p">(</span><span class="n">particula</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Esta función describe los choques de las partículas con la pared.</span>
+<span class="sd">       Se asegura de que las partículas reboten elásticamente contra las paredes de la caja.</span>
+<span class="sd">       Verifica cada componente de la posición respecto a los límites de la caja y</span>
+<span class="sd">       ajusta tanto la velocidad como la posición de la partícula en caso de una colisión con una pared.</span>
+
+<span class="sd">       La condición de si la posiciõn del disco en x es mayor a la longitud de una de las caras de la caja menos el radio</span>
+<span class="sd">       del disco verifica si la posición en x de la partícula + su radio</span>
+<span class="sd">       excede el límite derecho de la caja. Si ese es el caso, entonces choca con la pared derecha y entonces</span>
+
+<span class="sd">       $$</span>
+<span class="sd">       v_{x} = -v{x}</span>
+<span class="sd">       $$</span>
+
+<span class="sd">       Y</span>
+
+<span class="sd">       $$</span>
+<span class="sd">       x_{0} = size[0] - r</span>
+<span class="sd">       $$</span>
+
+<span class="sd">       Donde v es la velocidad del disco, size[0] la longitud de la caja en x</span>
+<span class="sd">       y r el radio del disco.</span>
+<span class="sd">       Esta función invierte la componente x de la velocidad (simulando un rebote elástico) y</span>
+<span class="sd">       ajusta la posición x para que la partícula no se salga de la caja. </span>
+
+<span class="sd">       Esta misma dinámica cumple con todos los condicionales, cada uno analizando el choque con una pared en específico.</span>
+
+<span class="sd">       Args: </span>
+<span class="sd">           partícula (class): representa a una partícula individual dentro de la simulación. Se utiliza para poder modificar las propiedades de una partícula (en este caso su posición y velocidad) al detectar colisiones con las paredes de la caja.</span>
+<span class="sd">           size (tuple): Tupla de dos elementos ´(ancho, alto)´ que representa las dimensiones de la caja en la que se están moviendo las partículas. (´size[0]´ es el ancho de la caja y ´size[1]´ es la altura de la caja, en este caso nuestra caja es de medida 1x1). Se utiliza para delimitar las paredes de la caja y así poder verificar las colisiones con ésta.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span><span class="p">:</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span>
+    <span class="k">elif</span> <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span><span class="p">:</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span>
+    <span class="k">if</span> <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span><span class="p">:</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span>
+    <span class="k">elif</span> <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span><span class="p">:</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">particula</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">particula</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">particula</span><span class="o">.</span><span class="n">rad</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
